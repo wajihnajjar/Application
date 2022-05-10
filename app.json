@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "Knock",
+    "slug": "Knock",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "Knock"
+}
