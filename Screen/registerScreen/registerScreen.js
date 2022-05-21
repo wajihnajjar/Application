@@ -26,6 +26,14 @@ super(props)
 render(){
 console.log(height,' ',width)
 var arr =["Mail" , "Numero de telephone", "Mot de passe" ]
+var padingFix  = 0.1 
+   /*
+      Name  : 0.43 
+           0.49
+           0.57
+
+      Input : 0, 46 , 
+      */
 return(
 <View>
 <View style={styles.container}>
@@ -34,29 +42,30 @@ return(
         <Image style={styles.image} source ={require("../../assets/images/worker.png")}/>
         <Text style ={styles.Name}>Nom et Prénom</Text>
         <Text style={styles.input1}></Text>
+        
         <TextInput style={styles.nameInput} />
         {arr.map((elem, index)=> {
             return (
                 <View>
-           <Text key={index} style ={{
+           <Text key={index+1} style ={{
             position:'absolute', 
-            top:351+((index+1) * 60),
-            left:13,
+            top:height*((padingFix * (0.7*index+1))+0.42 ),
+            left:width * 0.03,
             fontWeight:'700', 
             fontSize:17,
              }}>{elem}</Text>
              <Text style={{    position:"absolute",
     backgroundColor:"black" ,
      borderColor:0.1,    
-      top:395 + (index+1)*60,
-  left: 7 ,
-  height:2 , 
+      top:height*((padingFix * (0.73*index+1))+0.47 ),
+      left:width * 0.03,
+      height:2 , 
   width:300 , 
 }}></Text>
            <TextInput style={{
       position:"absolute" , 
-      top:370+ (index+1)*60, 
-      left :7 , 
+      top:height*((padingFix * (0.73*index+1))+0.44 ),
+      left:width * 0.03,
       width:400,
            }} secureTextEntry={elem=="Mot de passe"? true:false}/>
 </View>
@@ -64,8 +73,8 @@ return(
         })}
         <Text style ={{
      position:"absolute" , 
-     top : 365+(arr.length+1)*60,
-     left:13,
+     top : height * 0.76,
+     left:width*0.03,
      fontWeight:'700', 
      fontSize:17,
         
@@ -73,31 +82,31 @@ return(
         }}>Date de naissance</Text>
         <Text style ={{
   position:"absolute" , 
-  top:365+(arr.length+1) * 60,
-  left: 230,
+  top : height * 0.76,
+    left: width*  0.6,
   fontWeight:'700', 
   fontSize:17,
 
         }}>.../.../....</Text>
 
        <TextInput style={{
-       top:362+(arr.length+1) * 60,
-       left: 230,
+  top : height * 0.76,
+  left: width*0.6,
+       width:16,
+       }}></TextInput> 
+       
+       <TextInput style={{
+  top : height * 0.724,
+  left: width*0.66,
        width:16,
 
        }}></TextInput> 
        
        <TextInput style={{
-       top:335+(arr.length+1) * 60,
-       left: 250,
-       width:16,
-
-       }}></TextInput> 
-       
-       <TextInput style={{
-       top:305+(arr.length+1) * 60,
-       left: 270,
+  top : height * 0.690,
+  left: width*0.72,
        width:22,
+
        }}></TextInput> 
        <Image style={styles.google} source = {require("../../assets/images/google.png")} />
 <Image style={styles.facebook} source = {require("../../assets/images/facebook.png")} />
@@ -129,10 +138,8 @@ return(
   borderRadius:30,
   alignItems: "center",
   justifyContent: "center",
-  marginTop: 550,
-  left : 30,
-  top:150 , 
-  marginBottom: 100,
+  marginTop: height * 0.88,
+  left : width * 0.1,
   height: 59.0,
   width:283,
   },
@@ -144,21 +151,21 @@ fontSize:20
   
   google:{
     position:"absolute",
-   top:635 ,
-   left:  140, 
+   top:height * 0.8 ,
+   left:  width * 0.41, 
   },
   facebook :{
     position:"absolute",
     zIndex:4,
-  top: 635,
-  left:210,
+    top:height * 0.8 ,
+    left:  width * 0.57, 
   },
   utilise:{
     position:"absolute",
     fontWeight:"700" , 
     fontSize:20,
-    top:640,
-    left: 15 ,
+    top:height*0.81,
+    left: width * 0.04 ,
     
     
   
@@ -169,8 +176,8 @@ position:"absolute",
 width:257, 
 height:236 , 
 backgroundColor: "#F1F5F8",
-top:350,
-right:230,
+top:height * 0.4,
+right:width * 0.7,
 transform : [{rotate:"-61.58deg"}] , 
 borderRadius:40,
   },
@@ -180,14 +187,14 @@ borderRadius:40,
     transform : [{rotate:"144.44deg"}] , 
     width:180, 
     height:800 ,
-    bottom:150, 
-       left:150,      
+    bottom:height* 0.17, 
+       left:width * 0.35,      
   },
  image:{
 position:"absolute",
 zIndex:4,
-top:50,
-left:30,
+top:height * 0.06,
+left:width* 0.1,
 //-4.26deg
 // so hight = 800 and widht = 360 
 // top + = currhigh - hight  
@@ -196,8 +203,8 @@ transform : [{rotate:"-4.26deg"}] ,
  },
 Name:{
 position:'absolute', 
-top:351,
-left:13,
+top:height * 0.43,
+left:width * 0.03,
 fontWeight:'700', 
 fontSize:17,
 },
@@ -205,15 +212,16 @@ input1 : {
     position:"absolute",
     backgroundColor:"black" ,
      borderColor:0.1,    
-      top:395,
-  left: 7 ,
+      top:height * 0.49,
+   
+  left: width * 0.03 ,
   height:2 , 
   width:300 , 
   },
   nameInput:{
       position:"absolute" , 
-      top:370, 
-      left :7 , 
+      top:height* 0.46, 
+      left :width * 0.03 , 
       width:400,
   },
   })

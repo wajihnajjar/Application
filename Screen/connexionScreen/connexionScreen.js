@@ -17,7 +17,6 @@ import {
     Pressable,
   } from "react-native";
   import { LinearGradient } from "expo-linear-gradient";
-
   const { width, height } = Dimensions.get("screen");
 class Connexion extends Component {
 constructor(props){
@@ -59,8 +58,8 @@ return (
     botton : {
          height:53 , 
          width:270 , 
-         bottom:150  ,
-         left : 50 , 
+         bottom:height*0.2  ,
+         left : width*0.15 , 
  backgroundColor:"white" ,
  borderColor:"black", 
 elevation:4,
@@ -75,8 +74,8 @@ borderWidth:2,
     } , 
     text2 : {
 
-         left :112 ,
-         top : 15,
+         left :width*0.28  ,
+         top : height * 0.015 ,
          fontWeight:'700', 
     }, 
     text3 : {
@@ -86,14 +85,14 @@ borderWidth:2,
     },
     image: {
         position:"absolute",
-          top:  110 ,
-          left:130 , 
+          top:  height * 0.1,
+          left:width*0.35 , 
          width:120,
          height:164,
   
       },
       image1: {
-        bottom :220 , 
+        bottom :height * 0.28 , 
 
 
 
@@ -102,8 +101,7 @@ borderWidth:2,
 backgroundColor : "#FFFFFF" , 
 height:500 , 
 width:width , 
-top : 300 ,
-left:3 ,              
+top : height *0.37 ,
 borderRadius:40,
       },
       continueButtonStyle: {
@@ -113,10 +111,8 @@ borderRadius:40,
         borderRadius:30,
         alignItems: "center",
         justifyContent: "center",
-        marginTop: 550,
-       left : 50,
-       top:130 , 
-        marginBottom: 100,
+        marginTop: height * 0.84,
+        left : width*0.13 , 
         height: 59.0,
         width:283,
       },

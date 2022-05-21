@@ -63,15 +63,15 @@ return(
 <View style={styles.container}>
 <Text style={styles.whiteSquare}> </Text>
 <Text style={{
-top:250,
-left:70,
+top:height * 0.32,
+left:width * 0.2,
 fontWeight:"700",
 fontSize:22,
 }}>Choisissez votre</Text>
 <Text style ={{
 
-top:250,
-left:110,
+top:height * 0.32,
+left:width * 0.34,
 fontWeight:"700",
 fontSize:22,
 
@@ -80,6 +80,13 @@ fontSize:22,
 
 
 </Text>
+
+<Text style={styles.greenSquare}> 
+
+
+
+</Text>
+
 <View style={{flex:1 , 
 
 }}>
@@ -92,19 +99,22 @@ contentContainerStyle={{
 renderItem={({ item }) =>
 
 <View style={{
- top : 290,
- right:10, 
+ top : height * 0.33,
+ left:width*0.01, 
  zIndex:4,
  flexDirection:"row" , 
   padding:20,
 
 }}>
-<Image   source={require("../../assets/images/jardinier.png")}/>
+  {item.id ==1 ? <Image   source={require("../../assets/images/jardinier.png")}/> : item.id ==2 ?
+   <Image   source={require("../../assets/images/electricien.png")}/> : item.id==3 ? <Image   source={require("../../assets/images/plombier.png")}/> :<Image   source={require("../../assets/images/tansporter.png" )}/>
+}
 <Text style ={{
- padding:20,
- left:50,
+ padding:10,
+ left:width*0.14,
  fontWeight:"700" , 
  fontSize:16,
+ borderRadius:15,
 }}>{item.title}</Text>
 </View>
 }
@@ -126,17 +136,21 @@ const styles = StyleSheet.create({
           backgroundColor:"#FFFFFF", 
           width:200 , 
           height:200,
-top:250 ,
+top:height * 0.3 ,
 borderRadius:40,
-left:300,
+left:width*0.7,
 transform : [{rotate:"55.35deg"}] , 
        },
-text:{
+greenSquare:{
     position:"absolute" , 
-    top:250 ,
-    backgroundColor:"red",
-fontSize:22 , 
-fontWeight:"700" , 
-left:150,
+    width  : width*0.5 , 
+    height : height*0.3,
+        left  : width * 0.2 ,
+        top  : height * 0.9, 
+ backgroundColor:"#71C9CE", 
+ borderRadius :40 , 
+ transform : [{rotate:"55.35deg"}] , 
+
+
 },
 })

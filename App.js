@@ -9,10 +9,13 @@ import Menu from './Screen/menuScreen/menuScreen'
 import Profile from './Screen/profileScreen/profileScreen'
 import MapView from "react-native-maps";
 import Home from "./Screen/homeScreen/homeScreen"
+import Wating  from './Screen/watingScreen/watingScreen';
+import Oncall from './Screen/oncallScreen/oncallScreen';
+import Onroad from './Screen/onroadScreen/onroadScreen';
 export default function App() {
   return (
 <View style={styles.container}>
-<Welcome/>
+<Onroad/>
 </View>
   );
 }

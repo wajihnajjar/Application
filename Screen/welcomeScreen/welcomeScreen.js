@@ -20,8 +20,7 @@ import {
   } from "react-native";
 import { Colors } from 'react-native/Libraries/NewAppScreen';
   var { width, height } = Dimensions.get("screen");
- width=300 
- height = 650
+
  const MontserratB = null 
 class Welcome extends Component {
 constructor(props){
@@ -62,8 +61,9 @@ const styles = StyleSheet.create({
     image: {
       position:"absolute",
       zIndex:3,
-        top:normalize(180,'height') ,
-        left:normalize(120) , 
+        top:height * 0.2 ,
+        left:width*0.35 ,
+         
        width:normalize(120),
        height: normalize(164),
 
@@ -75,8 +75,8 @@ const styles = StyleSheet.create({
     }, 
     text : {
        zIndex:4,
-       top:normalize(350,'height') , 
-       left : normalize(110)   , 
+       top:height*0.5 , 
+       left : width*0.3   , 
        fontSize:20  , 
        fontWeight:'700' , 
     } , 
@@ -86,9 +86,8 @@ const styles = StyleSheet.create({
       borderRadius:30,
       alignItems: "center",
       justifyContent: "center",
-      marginTop: normalize(510,'height'),
-     left : normalize(50),
-      marginBottom: normalize(300,'height'),
+      marginTop: height*0.7,
+     left : width*0.1,
       height: normalize(59.0),
       width:normalize(283),
     },
@@ -96,8 +95,8 @@ const styles = StyleSheet.create({
     text1 : {
 
       zIndex:4,
-      top:normalize(345,'height') , 
-      left : normalize(132)   , 
+      top:height * 0.501, 
+      left : width*0.35   , 
       fontSize:20   , 
       fontWeight:'700' , 
       textAlign:"left",
@@ -106,8 +105,8 @@ const styles = StyleSheet.create({
     text2: {
 
       zIndex:4,
-      top:normalize(340,'height') , 
-      left : normalize(110)   , 
+      top:height * 0.502, 
+      left : width*0.31   , 
       fontSize:25   , 
       fontWeight:'900' ,
           
@@ -118,8 +117,8 @@ const styles = StyleSheet.create({
       zIndex:3,
       marginVertical: 8,
 
-      top:normalize(530,'height') , 
-      left :normalize(80)   , 
+      top:height* 0.53 , 
+      left :width   , 
       fontSize:25  , 
       fontWeight:'700' ,
 borderColor:"red" ,
@@ -128,8 +127,11 @@ borderRadius:200
     },
     cadre : {
         position:"absolute",
-        top: normalize(30,'height') , 
-       right :normalize(280)  ,
+        top: height*0.001,
+       right :width * 0.7  ,
+/*
+ right 280 , 
+*/
        width:normalize(200),
        borderRadius:40,
        height:normalize(200), 
@@ -138,8 +140,8 @@ borderRadius:200
     } , 
     cadre1 : {
         position:"absolute",
-        bottom: normalize(340,'height') , 
-        left :normalize(290),
+        bottom: height * 0.5,
+        left :width * 0.8,
         width:normalize(200),
         borderRadius:40,
         height:normalize(200), 
@@ -154,7 +156,7 @@ borderRadius:200
         transform : [{rotate:"-42.66deg"}] , 
         width:normalize(200),
         height:normalize(200), 
-        bottom:normalize(10) , 
+        bottom:height* 0.01, 
         borderRadius:40,
         right :normalize(210)  ,
         opacity: 1,
