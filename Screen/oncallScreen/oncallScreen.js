@@ -1,6 +1,8 @@
 import React  , {Component}from 'react';
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialIcons } from '@expo/vector-icons';
+import { withNavigation } from "react-navigation";
+
 import {
     Text,
     View,
@@ -20,7 +22,11 @@ import {
     FlatList,
   } from "react-native";
   const { width, height } = Dimensions.get("screen");
-export default class Oncall extends Component{
+ class Oncall extends Component{
+    static navigationOptions={
+        title:"Oncall"
+      
+        }
 constructor(props){
 super(props)
 }
@@ -98,16 +104,21 @@ showRating({ number }) {
 
 
 render(){
+    const {navigate} = this.props.navigation 
+
 return(
 <View>
 <View style ={styles.container}>
+    <TouchableOpacity onPress={()=>{
+ navigate("Home")  
+
+    }}>
 <Image  style={{
  position:"absolute" , 
  left:width*0.05 , 
- height:'4%' ,
  top:height*0.12 , 
- width:"9%" , 
 }} source={require("../../assets/images/close.png")} />
+</TouchableOpacity>
 <View style={{
 position:"absolute", 
 width:'30%', 
@@ -147,11 +158,9 @@ source = {require("../../assets/images/foulen.png")}
 style={{
   position:"absolute" , 
   zIndex: 3 , 
-  top : height*0.2 , 
-  left : width * 0.4 , 
+  top : height*0.22 , 
+  left : width * 0.45 , 
   borderRadius:200,
-  height:'10%',
-  width:'23%'
 }}
 />
 <Image  style={{
@@ -204,7 +213,10 @@ top:height*0.06,
           colors={['rgba(248, 0, 0, 1)', 'rgba(248, 0, 0, 1))',]}
           style={styles.continueButtonStyle}
         >
-          <Text  style = {{
+          <Text  onPress={()=>{
+ navigate("Onroad")
+
+          }} style = {{
         fontWeight:'700'  , 
         fontSize:16 ,
             color:"white",
@@ -215,8 +227,6 @@ top:height*0.06,
 <Image 
 style={{
 position:"absolute",
-width:"9%",
-height:'3%', 
 top:height*0.7 , 
 left:width*0.46,
 
@@ -225,8 +235,6 @@ source ={require("../../assets/images/mute.png")}/>
 <Image
 style={{
     position:"absolute",
-    width:"9%",
-    height:'3%', 
     top:height*0.7 , 
     left:width*0.27,
     
@@ -236,8 +244,6 @@ style={{
 source ={require("../../assets/images/parler.png")}/>
 <Image  style={{
  position:"absolute",
- width:"9%",
- height:'3%', 
  top:height*0.7 , 
  left:width*0.67,
  
@@ -300,3 +306,4 @@ const styles = StyleSheet.create({
       },
 
     })
+    export default withNavigation(Oncall);

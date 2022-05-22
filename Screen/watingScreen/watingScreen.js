@@ -1,6 +1,8 @@
 import React  , {Component}from 'react';
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialIcons } from '@expo/vector-icons';
+import { withNavigation } from "react-navigation";
+
 import {
     Text,
     View,
@@ -20,21 +22,35 @@ import {
     FlatList,
   } from "react-native";
   const { width, height } = Dimensions.get("screen");
-export default class Wating extends Component{
+  var x 
+ class Wating extends Component{
+  static navigationOptions={
+    title:"Wating"
+  
+    }
 constructor(props){
 super(props)
 }
 render(){
+  const {navigate} = this.props.navigation 
+ x = setTimeout(()=>{
+ navigate("Oncall")
+
+},2000)
 return(
 <View>
 <View style ={styles.container}>
+  <TouchableOpacity onPress={()=>{
+    clearTimeout(x)
+  navigate("Home")
+
+  }}>
 <Image  style={{
  position:"absolute" , 
  left:width*0.05 , 
- height:'4%' ,
  top:height*0.12 , 
- width:"9%" , 
 }} source={require("../../assets/images/close.png")} />
+</TouchableOpacity>
 <Image 
 source = {require("../../assets/images/foulen.png")}
 style={{
@@ -98,7 +114,10 @@ top:height*0.06,
           colors={['rgba(248, 0, 0, 1)', 'rgba(248, 0, 0, 1))',]}
           style={styles.continueButtonStyle}
         >
-          <Text  style = {{
+          <Text  onPress={()=>{
+         navigate("Home")
+
+          }} style = {{
         fontWeight:'700'  , 
         fontSize:16 ,
             color:"white",
@@ -194,3 +213,4 @@ const styles = StyleSheet.create({
       },
 
     })
+    export default withNavigation(Wating);

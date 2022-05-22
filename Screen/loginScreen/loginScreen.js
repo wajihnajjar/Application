@@ -1,5 +1,6 @@
 import React  , {Component}from 'react';
 import { LinearGradient } from "expo-linear-gradient";
+import { withNavigation } from "react-navigation";
 
 import {
     Text,
@@ -21,11 +22,17 @@ import {
   const { width, height } = Dimensions.get("screen");
 
   class Login extends Component{
-constructor(props){
+    static navigationOptions={
+      title:"Login"
+    
+      }
+    constructor(props){
 super(props)
 
 }
 render(){
+  const {navigate} = this.props.navigation 
+
 return (
   <View>
 
@@ -52,7 +59,10 @@ return (
           colors={['rgba(113, 201, 206, 1)', 'rgba(113, 201, 206, 1))',]}
           style={styles.continueButtonStyle}
         >
-          <Text  style = {styles.text3} >Connexion</Text>
+          <Text  style = {styles.text3} onPress={()=>{
+        navigate("Home")
+
+          }} >Connexion</Text>
         </LinearGradient>
 
 </View>
@@ -89,7 +99,6 @@ width:300 ,
      top:height  * 0.61,
      left: width * 0.04 ,
      width:300,
-     backgroundColor:"red" , 
 
  },
  input2 : {
@@ -159,7 +168,7 @@ zIndex:4,
 borderRadius:30,
 alignItems: "center",
 justifyContent: "center",
-marginTop: height * 0.87,
+marginTop: height * 0.86,
 left : width * 0.1,
 marginBottom: 100,
 height: 59.0,
@@ -201,4 +210,4 @@ fontWeight:"700",
     
 })
 
-  export default Login 
+export default withNavigation(Login);

@@ -1,6 +1,7 @@
 import React  , {Component}from 'react';
 import { LinearGradient } from "expo-linear-gradient";
 import normalize from 'react-native-normalize';
+import { useNavigation } from '@react-navigation/native'
 
 import {
     Text,
@@ -18,15 +19,18 @@ import {
     BackHandler,
     Animated,
   } from "react-native";
-import { Colors } from 'react-native/Libraries/NewAppScreen';
   var { width, height } = Dimensions.get("screen");
 
  const MontserratB = null 
+
+
 class Welcome extends Component {
-constructor(props){
-super(props)
-}
+  static navigationOptions={
+  title:"Welcome"
+
+  }
 render(){
+  const {navigate} = this.props.navigation 
     return (
         <View>
           <Image source={require("../../assets/images/logo.png")} style = {styles.image}/>
@@ -40,8 +44,11 @@ render(){
           end={{ x: 0, y: 0 }}
           colors={['rgba(113, 201, 206, 1)', 'rgba(113, 201, 206, 1))',]}
           style={styles.continueButtonStyle}
+
         >
-          <Text style = {styles.text4} >Soyer les bienvenues</Text>
+          <Text style = {styles.text4}         onPress={()=>{
+ navigate("Connexion")
+         }} >Soyer les bienvenues</Text>
         </LinearGradient>
   <Text style ={styles.cadre}>                    </Text>
 <Text style ={styles.cadre1}> </Text>
@@ -71,11 +78,12 @@ const styles = StyleSheet.create({
     text4 : {
       fontSize:17  , 
       fontWeight:'700' , 
-  right: 7,
     }, 
     text : {
+      position:"absolute", 
+
        zIndex:4,
-       top:height*0.5 , 
+       top:height*0.45 , 
        left : width*0.3   , 
        fontSize:20  , 
        fontWeight:'700' , 
@@ -93,9 +101,10 @@ const styles = StyleSheet.create({
     },
   
     text1 : {
+      position:"absolute", 
 
       zIndex:4,
-      top:height * 0.501, 
+      top:height * 0.48, 
       left : width*0.35   , 
       fontSize:20   , 
       fontWeight:'700' , 
@@ -103,9 +112,10 @@ const styles = StyleSheet.create({
 
     },
     text2: {
+      position:"absolute", 
 
       zIndex:4,
-      top:height * 0.502, 
+      top:height * 0.52, 
       left : width*0.31   , 
       fontSize:25   , 
       fontWeight:'900' ,
@@ -114,6 +124,7 @@ const styles = StyleSheet.create({
       color:"#71C9CE"
     },
     botton : {
+
       zIndex:3,
       marginVertical: 8,
 
@@ -126,8 +137,9 @@ borderRadius:200
 
     },
     cadre : {
+      
         position:"absolute",
-        top: height*0.001,
+        top: height*0.002,
        right :width * 0.7  ,
 /*
  right 280 , 
@@ -140,8 +152,9 @@ borderRadius:200
     } , 
     cadre1 : {
         position:"absolute",
-        bottom: height * 0.5,
-        left :width * 0.8,
+        zIndex:3,
+        top: height * 0.3,
+        left :width * 0.76,
         width:normalize(200),
         borderRadius:40,
         height:normalize(200), 
@@ -152,13 +165,14 @@ borderRadius:200
     cadre2 : {
 
         position:"absolute",
+        zIndex:6,
         backgroundColor: "#F1F5F8",
         transform : [{rotate:"-42.66deg"}] , 
-        width:normalize(200),
-        height:normalize(200), 
-        bottom:height* 0.01, 
+        width:(200),
+        height:(200), 
+        top:height* 0.8, 
         borderRadius:40,
-        right :normalize(210)  ,
+        right : width * 0.7  ,
         opacity: 1,
     }
 })

@@ -1,6 +1,9 @@
 import React  , {Component}from 'react';
 import { LinearGradient } from "expo-linear-gradient";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import { withNavigation } from "react-navigation";
+import * as Location from 'expo-location';
+
 import {
     Text,
     View,
@@ -47,14 +50,39 @@ import {
     
     ]
     
-export default class Home extends Component{
+ class Home extends Component{
+    static navigationOptions={
+        title:"Home"
+      
+        }
 constructor(props)
 {
     super(props)
     this._map = React.createRef(null);
+    this.state={
+ lat : 0 , 
+ long : 0 , 
+
+    }
 
 }
+ async componentDidMount(){
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== 'granted') {
+      setErrorMsg('Permission to access location was denied');
+      return;
+    }
+    let location = await Location.getCurrentPositionAsync({});
+     this.setState({ lat: location.coords.latitude} ) 
+     this.setState({long :location.coords.longitude })
+   
+
+
+}
+
 render(){
+    const {navigate} = this.props.navigation 
+
 return (
 <View>
 <View style = {styles.container}>
@@ -74,19 +102,14 @@ style={{
     left:3,
  
                  }}
-
 region={{
-latitude: 36.804887,
-longitude: 9.783939,
+latitude: this.state.lat,
+longitude: this.state.long,
 latitudeDelta: 0.0922,
 longitudeDelta: 0.0421,
 }}
-
-
-
 >
-{service.map((marker, index) => {
-                 
+{service.map((marker, index) => {           
                     return (
                         <MapView.Marker
                             key={index}
@@ -141,20 +164,26 @@ left:width*0.3 ,
 fontWeight:"700", 
 fontSize:17,
 }}> Tous le $service</Text>
-<Image 
-source ={require('../../assets/images/profile.png')}
-style={{
+       <TouchableOpacity   onPress ={()=>{
+navigate("UserProfile")
+}}style={{
  position:"absolute" , 
-    height : height*0.04,
-    width:width*0.1,
     left:width*0.03 , 
-    top : height * 0.16  ,
+    top : height * 0.13  ,
     zIndex : 6, 
 
 
 
 }}
+>
+
+<Image 
+onPress={()=>{
+
+}}
+source ={require('../../assets/images/profile.png')}
 />
+</TouchableOpacity>
 <Text style={{
 position:"absolute" , 
 top:height*0.17 , 
@@ -197,6 +226,10 @@ contentContainerStyle={{
     flexGrow: 1,
     }}
 renderItem={({ item }) =>
+<TouchableOpacity onPress={()=>{
+ navigate("Profile")
+
+}}>
 <View style={{
      padding:20 ,
      flexDirection:"row" , 
@@ -223,6 +256,7 @@ right:width*0.27,
 }}>{item.exp}</Text>
 
 </View>
+</TouchableOpacity>
 }
 
 />
@@ -270,3 +304,4 @@ backgroundColor:"black",
     },
 
 })
+export default withNavigation(Home);

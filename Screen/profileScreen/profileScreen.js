@@ -1,6 +1,7 @@
 import React  , {Component}from 'react';
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialIcons } from '@expo/vector-icons';
+import { withNavigation } from "react-navigation";
 
 import {
     Text,
@@ -21,7 +22,11 @@ import {
     FlatList,
   } from "react-native";
   const { width, height } = Dimensions.get("screen");
-export default class Profile extends Component{
+ class Profile extends Component{
+    static navigationOptions={
+        title:"Profile"
+      
+        }
 constructor(props){
 super(props)
 }
@@ -99,18 +104,22 @@ showRating({ number }) {
 
 
 render(){
+    const {navigate} = this.props.navigation 
+
 return (
 <View>
 <View style ={styles.container}>
+<TouchableOpacity onPress={()=>{
+  navigate("Home") 
 
+}}>
 <Image  style={{
  position:"absolute" , 
  left:width*0.05 , 
- height:'4%' ,
  top:height*0.12 , 
- width:"9%" , 
 
 }} source={require("../../assets/images/close.png")} />
+</TouchableOpacity>
 <View style={{
 position:"absolute", 
 width:100, 
@@ -128,7 +137,10 @@ zIndex:3,
           colors={['rgba(227, 253, 253, 1)', 'rgba(227, 253, 253, 1))',]}
           style={styles.continueButtonStyle}
         >
-          <Text  style = {{
+          <Text  onPress={()=>{
+               navigate("Wating")
+
+          }} style = {{
         fontWeight:'700'  , 
         fontSize:16 ,
 
@@ -355,3 +367,4 @@ const styles = StyleSheet.create({
 
 
 })
+export default withNavigation(Profile);

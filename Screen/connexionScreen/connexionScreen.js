@@ -1,4 +1,6 @@
 import React  , {Component}from 'react';
+import { withNavigation } from "react-navigation";
+
 import {
     Text,
     View,
@@ -19,10 +21,17 @@ import {
   import { LinearGradient } from "expo-linear-gradient";
   const { width, height } = Dimensions.get("screen");
 class Connexion extends Component {
+    static navigationOptions={
+    title:"Connexion"
+  
+    }
+  
 constructor(props){
 super(props) 
 }
 render(){
+  const {navigate} = this.props.navigation 
+
 return (
   <View> 
 <View style = {styles.container}>
@@ -35,9 +44,15 @@ return (
           colors={['rgba(113, 201, 206, 1)', 'rgba(113, 201, 206, 1))',]}
           style={styles.continueButtonStyle}
         >
-          <Text  style = {styles.text3} >Connexion</Text>
+          <Text  style = {styles.text3} onPress={()=>{
+      navigate("Login")
+
+          }} >Connexion</Text>
         </LinearGradient>
-        <Pressable style ={styles.botton}>
+        <Pressable style ={styles.botton} onPress={()=>{
+ navigate("Register") 
+
+        }}>
 <Text style = {styles.text2}>Register</Text>
 </Pressable>
 
@@ -58,7 +73,7 @@ return (
     botton : {
          height:53 , 
          width:270 , 
-         bottom:height*0.2  ,
+         bottom:height*0.25  ,
          left : width*0.15 , 
  backgroundColor:"white" ,
  borderColor:"black", 
@@ -101,7 +116,7 @@ borderWidth:2,
 backgroundColor : "#FFFFFF" , 
 height:500 , 
 width:width , 
-top : height *0.37 ,
+top : height *0.33 ,
 borderRadius:40,
       },
       continueButtonStyle: {
@@ -111,7 +126,7 @@ borderRadius:40,
         borderRadius:30,
         alignItems: "center",
         justifyContent: "center",
-        marginTop: height * 0.84,
+        marginTop: height * 0.81,
         left : width*0.13 , 
         height: 59.0,
         width:283,
@@ -124,7 +139,7 @@ borderRadius:40,
       alignItems: "center",
       justifyContent: "center",
       //image.png
-      marginTop: 550,
+      marginTop: height*0.81,
      left : 50,
      top:50 , 
       marginBottom: 100,
@@ -134,4 +149,4 @@ borderRadius:40,
    
 })
 
-export default Connexion
+export default withNavigation(Connexion);

@@ -5,12 +5,8 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ],
-    "config": {
-      "googleMaps": {
-        "apiKey": "YOUR GOOGLE MAP API KEY HERE"
-      }
-    }
+    ]
+   
   },
   "name": "Knock"
 }

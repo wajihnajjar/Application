@@ -2,6 +2,7 @@ import React  , {Component}from 'react';
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialIcons } from '@expo/vector-icons';
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import { withNavigation } from "react-navigation";
 
 import {
     Text,
@@ -22,7 +23,12 @@ import {
     FlatList,
   } from "react-native";
   const { width, height } = Dimensions.get("screen");
-export default  class Onroad extends Component{
+  var x 
+class Onroad extends Component{
+    static navigationOptions={
+        title:"Onroad"
+      
+        }
     constructor(props){
         super(props)
         }
@@ -99,17 +105,26 @@ export default  class Onroad extends Component{
           }
              
 render(){
+    const {navigate} = this.props.navigation 
+   x = setTimeout(()=>{
+     navigate("Paying")
+
+ },2000)
     return(
 
         <View>
 <View style ={styles.container}>
-<Image  style={{
+    <TouchableOpacity onPress={()=>{
+              
+  navigate("Paying")
+
+    }}><Image  style={{
  position:"absolute" , 
  left:width*0.05 , 
- height:'4%' ,
  top:height*0.12 , 
- width:"9%" , 
 }} source={require("../../assets/images/close.png")} />
+</TouchableOpacity>
+
 <View style={{
 position:"absolute", 
 width:'50%', 
@@ -171,7 +186,7 @@ Foulen ben Foulen
    borderRadius: 60, 
    borderWidth: 1, 
 top:height*0.33,
-      left:width*0.01 , 
+      left:width*0.001 , 
       overflow: 'hidden',
                 }}>
 
@@ -232,3 +247,4 @@ const styles = StyleSheet.create({
         width: width , 
       }, 
     })
+    export default withNavigation(Onroad);

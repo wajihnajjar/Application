@@ -1,5 +1,7 @@
 import React  , {Component}from 'react';
 import { LinearGradient } from "expo-linear-gradient";
+import { withNavigation } from "react-navigation";
+
 import {
     Text,
     View,
@@ -52,8 +54,7 @@ img: "../../assets/images/tansporter.png" ,
 
 
 ]
-
-export default class Menu extends Component{
+ class Menu extends Component{
 constructor(props){
 super(props) 
 }
@@ -154,3 +155,4 @@ greenSquare:{
 
 },
 })
+export default withNavigation(Menu);

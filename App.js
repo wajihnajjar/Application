@@ -1,5 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import Test from './Screen/testScreen/testScreen';
 import { StyleSheet, Text, View } from 'react-native';
 import Welcome from './Screen/welcomeScreen/welcomeScreen'
 import Connexion  from './Screen/connexionScreen/connexionScreen';
@@ -12,19 +15,37 @@ import Home from "./Screen/homeScreen/homeScreen"
 import Wating  from './Screen/watingScreen/watingScreen';
 import Oncall from './Screen/oncallScreen/oncallScreen';
 import Onroad from './Screen/onroadScreen/onroadScreen';
-export default function App() {
-  return (
-<View style={styles.container}>
-<Onroad/>
-</View>
-  );
-}
+import Paying from './Screen/payingScreen/payingScreen'
+import UserProfile from './Screen/userProfileScreen/userProfileScreen';
+import 'react-native-gesture-handler';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const switchNavigator = createSwitchNavigator({
+  Welcome : Welcome , 
+  Connexion : Connexion ,
+  Register : Register , 
+  Menu : Menu , 
+ Profile : Profile , 
+ Wating : Wating , 
+ Oncall : Oncall , 
+ Home : Home , 
+
+ Onroad : Onroad , 
+ UserProfile : UserProfile , 
+  Login: Login,
+  Paying : Paying , 
+
+  mainFlow: createStackNavigator(
+    {
+ Test:Test
+    },
+  ),
+},
+  {
+    initialRouteName: 'Welcome',
+  });
+const App = createAppContainer(switchNavigator);
+export default () => {
+  return (
+    <App />
+  );
+};

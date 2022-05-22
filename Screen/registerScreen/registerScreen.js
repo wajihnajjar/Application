@@ -1,5 +1,6 @@
 import React  , {Component}from 'react';
 import { LinearGradient } from "expo-linear-gradient";
+import { withNavigation } from "react-navigation";
 
 import {
     Text,
@@ -19,11 +20,18 @@ import {
     Pressable,
   } from "react-native";
   const { width, height } = Dimensions.get("screen");
-  export default class Register extends Component{
+  class Register extends Component{
+
+    static navigationOptions={
+      title:"Register"
+    
+      }
 constructor(props){
 super(props) 
 }
 render(){
+  const {navigate} = this.props.navigation 
+
 console.log(height,' ',width)
 var arr =["Mail" , "Numero de telephone", "Mot de passe" ]
 var padingFix  = 0.1 
@@ -117,7 +125,10 @@ return(
           colors={['rgba(113, 201, 206, 1)', 'rgba(113, 201, 206, 1))',]}
           style={styles.continueButtonStyle}
         >
-          <Text  style = {styles.text3} >Register</Text>
+          <Text  style = {styles.text3} onPress={()=>{
+      navigate("Home")
+
+          }} >Register</Text>
         </LinearGradient>
 
 </View>
@@ -138,7 +149,7 @@ return(
   borderRadius:30,
   alignItems: "center",
   justifyContent: "center",
-  marginTop: height * 0.88,
+  marginTop: height * 0.86,
   left : width * 0.1,
   height: 59.0,
   width:283,
@@ -225,3 +236,4 @@ input1 : {
       width:400,
   },
   })
+  export default withNavigation(Register);
