@@ -40,7 +40,7 @@ super(props) ;
 return (
 <View>
 <View style = {styles.container}>
-  <TouchableOpacity onPress={()=>{
+  <Pressable onPress={()=>{
 
 navigate("Home")
 
@@ -51,7 +51,7 @@ navigate("Home")
  top:height*0.12 , 
 
 }} source={require("../../assets/images/close.png")} />
-</TouchableOpacity>
+</Pressable>
 
 <Image  style={{
 position:"absolute" , 

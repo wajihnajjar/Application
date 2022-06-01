@@ -101,25 +101,21 @@ showRating({ number }) {
       </View>
   )
 }
-
-
 render(){
     const {navigate} = this.props.navigation 
-
 return (
 <View>
 <View style ={styles.container}>
-<TouchableOpacity onPress={()=>{
-  navigate("Home") 
-
+<Pressable onPress={()=>{
+    console.log('ht')
+navigate("Home") 
 }}>
 <Image  style={{
  position:"absolute" , 
  left:width*0.05 , 
  top:height*0.12 , 
-
 }} source={require("../../assets/images/close.png")} />
-</TouchableOpacity>
+</Pressable>
 <View style={{
 position:"absolute", 
 width:100, 
@@ -129,7 +125,6 @@ left: width * 0.4,
 zIndex:3,
 }}>
 {this.showRating({number:4})}
-
 </View>
 <LinearGradient
           start={{ x: 1, y: 0 }}

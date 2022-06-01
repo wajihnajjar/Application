@@ -5,8 +5,10 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
-   
+    ],
+    "android": {
+      "package": "com.wajih05.Knock"
+    }
   },
   "name": "Knock"
 }

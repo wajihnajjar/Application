@@ -22,7 +22,8 @@ import {
     Pressable,
     FlatList,
   } from "react-native";
-  const { width, height } = Dimensions.get("screen");
+  const width = Dimensions.get("window").width
+  const height = Dimensions.get("window").height
   var service =[
     {
       id:1,
@@ -87,11 +88,11 @@ return (
 <View>
 <View style = {styles.container}>
     <View                 style={{
-   width: '102%', height: '45%',
-   borderRadius: 200, 
+   width: '90%', height: '45%',
+   borderRadius: 330, 
    borderWidth: 1, 
-top:height*0.23,
-      left:width*0.01 , 
+top:height*0.21,
+      left:width*0.03 , 
       overflow: 'hidden',
                 }}>
 
@@ -163,7 +164,7 @@ top:height*0.13 ,
 left:width*0.3 , 
 fontWeight:"700", 
 fontSize:17,
-}}> Tous le $service</Text>
+}}> Tous le Mecaniciens</Text>
        <TouchableOpacity   onPress ={()=>{
 navigate("UserProfile")
 }}style={{

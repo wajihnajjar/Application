@@ -19,7 +19,8 @@ import {
     Animated,
     Pressable,
   } from "react-native";
-  const { width, height } = Dimensions.get("screen");
+  const width = Dimensions.get("window").width
+  const height = Dimensions.get("window").height
 
   class Login extends Component{
     static navigationOptions={
@@ -60,7 +61,7 @@ return (
           style={styles.continueButtonStyle}
         >
           <Text  style = {styles.text3} onPress={()=>{
-        navigate("Home")
+        navigate("Menu")
 
           }} >Connexion</Text>
         </LinearGradient>

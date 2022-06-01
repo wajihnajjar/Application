@@ -33,6 +33,8 @@ render(){
   const {navigate} = this.props.navigation 
     return (
         <View>
+                <StatusBar hidden = {false}  translucent = {true}/>
+
           <Image source={require("../../assets/images/logo.png")} style = {styles.image}/>
 <View style = {styles.container}> 
 <Text style = {styles.text}>Profitez de votre</Text>

@@ -19,8 +19,9 @@ import {
     Animated,
     Pressable,
   } from "react-native";
-  const { width, height } = Dimensions.get("screen");
-  class Register extends Component{
+  const width = Dimensions.get("window").width
+  var height = Dimensions.get("window").height 
+   class Register extends Component{
 
     static navigationOptions={
       title:"Register"
@@ -119,6 +120,12 @@ return(
        <Image style={styles.google} source = {require("../../assets/images/google.png")} />
 <Image style={styles.facebook} source = {require("../../assets/images/facebook.png")} />
 <Text style = {styles.utilise}>ou utilisé</Text>
+<Pressable style={{
+  position:"absolute",
+}}  onPress={()=>{
+      navigate("Menu")
+
+          }} >
 <LinearGradient
           start={{ x: 1, y: 0 }}
           end={{ x: 0, y: 0 }}
@@ -126,11 +133,11 @@ return(
           style={styles.continueButtonStyle}
         >
           <Text  style = {styles.text3} onPress={()=>{
-      navigate("Home")
+      navigate("Menu")
 
           }} >Register</Text>
         </LinearGradient>
-
+        </Pressable>
 </View>
 </View>
 )
@@ -149,7 +156,7 @@ return(
   borderRadius:30,
   alignItems: "center",
   justifyContent: "center",
-  marginTop: height * 0.86,
+  marginTop: height * 0.88,
   left : width * 0.1,
   height: 59.0,
   width:283,

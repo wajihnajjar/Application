@@ -21,7 +21,8 @@ import {
     Pressable,
     FlatList,
   } from "react-native";
-  const { width, height } = Dimensions.get("screen");
+  const width = Dimensions.get("window").width
+  const height = Dimensions.get("window").height
  class Oncall extends Component{
     static navigationOptions={
         title:"Oncall"
@@ -109,6 +110,8 @@ render(){
 return(
 <View>
 <View style ={styles.container}>
+<StatusBar hidden = {true}  translucent = {true}/>
+
     <TouchableOpacity onPress={()=>{
  navigate("Home")  
 

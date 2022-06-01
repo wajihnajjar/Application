@@ -21,7 +21,8 @@ import {
     Pressable,
     FlatList,
   } from "react-native";
-  const { width, height } = Dimensions.get("screen");
+  const width = Dimensions.get("window").width
+  const height = Dimensions.get("window").height
 var service =[
 {
   id:1,
@@ -55,24 +56,32 @@ img: "../../assets/images/tansporter.png" ,
 
 ]
  class Menu extends Component{
+  static navigationOptions={
+    title:"Menu"
+  
+    }
 constructor(props){
 super(props) 
 }
 render(){
+  const {navigate} = this.props.navigation 
+
 return(
 <View>
+<StatusBar hidden = {true}  translucent = {true}/>
+
 <View style={styles.container}>
 <Text style={styles.whiteSquare}> </Text>
 <Text style={{
-top:height * 0.32,
+top:height * 0.2,
 left:width * 0.2,
 fontWeight:"700",
 fontSize:22,
 }}>Choisissez votre</Text>
 <Text style ={{
 
-top:height * 0.32,
-left:width * 0.34,
+top:height * 0.2,
+left:width * 0.3,
 fontWeight:"700",
 fontSize:22,
 
@@ -98,14 +107,17 @@ contentContainerStyle={{
   flexGrow: 1,
   }}
 renderItem={({ item }) =>
+<Pressable onPress={()=>{
+navigate("Home")
 
-<View style={{
+}}>
+  <View style={{
  top : height * 0.33,
  left:width*0.01, 
  zIndex:4,
  flexDirection:"row" , 
   padding:20,
-
+ 
 }}>
   {item.id ==1 ? <Image   source={require("../../assets/images/jardinier.png")}/> : item.id ==2 ?
    <Image   source={require("../../assets/images/electricien.png")}/> : item.id==3 ? <Image   source={require("../../assets/images/plombier.png")}/> :<Image   source={require("../../assets/images/tansporter.png" )}/>
@@ -118,6 +130,8 @@ renderItem={({ item }) =>
  borderRadius:15,
 }}>{item.title}</Text>
 </View>
+</Pressable>
+
 }
 />
 </View>
